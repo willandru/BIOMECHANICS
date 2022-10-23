@@ -1,0 +1,30 @@
+@willandru
+22-10-22
+-----------
+
+Kinematics
+	- Kinematics is the scientific study of the movement of the joints of our body (angular displacement) and the velocity of that movement (angular velocity).
+	- By placing markers on your feet and legs, we can precisely measure the movement and velocity of individual joints in three dimensions which improves the accuracy of our understanding of how humans walk, run and jump.
+	- We can also record very fast movements (up to 300 frames per second) which improves our understanding of biomechanics during fast movements that are common in sports such as running, football and netball. [1]
+
+Kinetics
+	- Kinetics is the scientific study the force applied on the body. To measure kinetics, we have patients walk or run over a force platform that is imbedded in the ground. This force platform measures the forces applied to it by the body and relays this information back to the computer.[1]
+
+
+									BIOMECHANICAL GAIT ANALYSIS
+
+Biomechanical gait analysis is commonly used to analyse sport performance and evaluate pathologic gait. [2]
+
+
+
+
+
+
+
+
+
+
+REFERENCES
+
+[1]https://www.thebiomechanicslab.com.au/what-is-3d-gait-analysis/
+[2]https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5897457/

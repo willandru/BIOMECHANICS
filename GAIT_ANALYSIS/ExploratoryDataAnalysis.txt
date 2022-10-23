@@ -1,0 +1,34 @@
+DATOS CONTROL ( 16 SENSORES )
+
+-HIP1
+-HIP2			
+-HIP3			
+-HIP4			
+-RightThigh1			
+-RightThigh2			
+-RightThigh3			
+-LeftThigh1			
+-LeftThigh2			
+-LeftThigh3			
+-LKNEE			
+-ANK			
+-LeftTibia3			
+-RKNEE			
+-RANK			
+-RightTibia3
+
+DATOS MARCHA OTP ( 13 SENSORES)
+-HIP1
+-HIP2	
+-HIP3	
+-RightThigh1	
+-RightThigh3	
+-LeftThigh1	
+-LeftThigh3	
+-LKNEE	
+-LANK	
+-LeftTibia3	
+-RKNEE	
+-RANK	
+-RightTibia3	
+
