@@ -32,3 +32,5 @@ DATOS MARCHA OTP ( 13 SENSORES)
 -RANK	
 -RightTibia3	
 
+
+Se realizaron las gráficas los sensores de la rodilla izquierda, rodilla derecha, cadera 1 y cadera 2, para cada una de sus coordenadas con respecto al timpo para realizar un análisis comparativo de la marcha entre un experimento control y un experimento de obstrucción del movimiento utilizando una OTP de tobillo izquierdo. Ademas de esto se graficaron la ubicación espacial 3D de todos 13 los sensores como se ve en la FIGURA ?.   Si observamos las coordenadas Z de la rodilla izquierda y rodilla derecha podemos ver como el uso de OTP obligo a ambas rodillas a levantarse más de lo normal para poder caminar bien.
