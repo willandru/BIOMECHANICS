@@ -9,8 +9,6 @@ Los datasets utilizados, así como el codigo fuente en R y la version MarkDown l
 
 # DIAGRAMAS DE ESFUERZO DEFORMACION PARA UNA PROBETA DE PLL 60% DENSIDAD
 
-
-
 Leemos los datos en R que vienen en un '.csv' con sus columnas bien nombradas y la tabla ubicada en ceros.
 ```{r}
 #CARGAMOS LOS DATOS TIPO '.csv', arreglada la tabla en excel y los nombres de la gráfica, verificar que quede todo en orden. 
@@ -49,37 +47,136 @@ g4s5 = read.csv('datos/g4/g4s5.csv')
 
 # REMOVEMOS LOS DATOS ATÍPICOS: GRAFICA 1
 ```{r}
+
+#GRUPO 1 
 #debido a que R es diferente de excel, lo más facil y además en este caso no se afecta la grŕafica al eliminar estos vaores que en el momento d emedición perdieron su '.' decimal. LOS DATOS DEBEN TENER PUNTOS'.' no comas ',', ya que el archivo CSV utiliza ',' para separar cada campo del dataframe
 
-Specimen1=Specimen1[Specimen1$carga<10000,]
-Specimen1=Specimen1[Specimen1$extension_de_traccion<20,]
+g1s1=g1s1[g1s1$Carga<10000,]
+g1s1=g1s1[g1s1$Extension_de_traccion<20,]
+g1s2=g1s2[g1s2$Carga<10000,]
+g1s2=g1s2[g1s2$Extension_de_traccion<20,]
+g1s3=g1s3[g1s3$Carga<10000,]
+g1s3=g1s3[g1s3$Extension_de_traccion<20,]
+g1s4=g1s4[g1s4$Carga<10000,]
+g1s4=g1s4[g1s4$Extension_de_traccion<20,]
+g1s4=tail(g1s4, -2)
+g1s5=g1s5[g1s5$Carga<10000,]
+g1s5=g1s5[g1s5$Extension_de_traccion<20,]
 
-Specimen2=Specimen2[Specimen2$carga<10000,]
-Specimen2=Specimen2[Specimen2$extension_de_traccion<20,]
+#GRUPO 2 
+#debido a que R es diferente de excel, lo más facil y además en este caso no se afecta la grŕafica al eliminar estos vaores que en el momento d emedición perdieron su '.' decimal. LOS DATOS DEBEN TENER PUNTOS'.' no comas ',', ya que el archivo CSV utiliza ',' para separar cada campo del dataframe
 
-Specimen3=Specimen3[Specimen3$carga<10000,]
-Specimen3=Specimen3[Specimen3$extension_de_traccion<20,]
+g2s1=g2s1[g2s1$Carga<10000,]
+g2s1=g2s1[g2s1$Extension_de_traccion<20,]
+g2s2=g2s2[g2s2$Carga<10000,]
+g2s2=g2s2[g2s2$Extension_de_traccion<20,]
+g2s3=g2s3[g2s3$Carga<10000,]
+g2s3=g2s3[g2s3$Extension_de_traccion<20,]
+g2s4=g2s4[g2s4$Carga<10000,]
+g2s4=g2s4[g2s4$Extension_de_traccion<20,]
+g2s4=tail(g2s4, -2)
+g2s5=g2s5[g2s5$Carga<10000,]
+g2s5=g2s5[g2s5$Extension_de_traccion<20,]
 
-Specimen4=Specimen4[Specimen4$carga<10000,]
-Specimen4=Specimen4[Specimen4$extension_de_traccion<20,]
-Specimen4=tail(Specimen4, -2)
 
-Specimen5=Specimen5[Specimen5$carga<10000,]
-Specimen5=Specimen5[Specimen5$extension_de_traccion<20,]
+#GRUPO 3
+#debido a que R es diferente de excel, lo más facil y además en este caso no se afecta la grŕafica al eliminar estos vaores que en el momento d emedición perdieron su '.' decimal. LOS DATOS DEBEN TENER PUNTOS'.' no comas ',', ya que el archivo CSV utiliza ',' para separar cada campo del dataframe
 
+g3s1=g3s1[g3s1$Carga<15000,]
+g3s1=g3s1[g3s1$Extension_de_traccion<20,]
+g3s2=g3s2[g3s2$Carga<10000,]
+g3s2=g3s2[g3s2$Extension_de_traccion<20,]
+g3s3=g3s3[g3s3$Carga<2000,]
+g3s3=g3s3[g3s3$Extension_de_traccion<20,]
+g3s4=g3s4[g3s4$Carga<10000,]
+g3s4=g3s4[g3s4$Extension_de_traccion<20,]
+g3s4=tail(g3s4, -2)
+g3s5=g3s5[g3s5$Carga<10000,]
+g3s5=g3s5[g3s5$Extension_de_traccion<20,]
+
+#GRUPO 4 
+#debido a que R es diferente de excel, lo más facil y además en este caso no se afecta la grŕafica al eliminar estos vaores que en el momento d emedición perdieron su '.' decimal. LOS DATOS DEBEN TENER PUNTOS'.' no comas ',', ya que el archivo CSV utiliza ',' para separar cada campo del dataframe
+
+g4s1=g4s1[g4s1$Carga<10000,]
+g4s1=g4s1[g4s1$Extension_de_traccion<20,]
+g4s2=g4s2[g4s2$Carga<10000,]
+g4s2=g4s2[g4s2$Extension_de_traccion<20,]
+g4s3=g4s3[g4s3$Carga<10000,]
+g4s3=g4s3[g4s3$Extension_de_traccion<20,]
+g4s4=g4s4[g4s4$Carga<10000,]
+g4s4=g4s4[g4s4$Extension_de_traccion<20,]
+g4s4=tail(g4s4, -2)
+g4s5=g4s5[g4s5$Carga<10000,]
+g4s5=g4s5[g4s5$Extension_de_traccion<20,]
 ```
 
 ## GRAFICAMOS: CARGA vs EXTENSION_DE_TRACCION
 
 ```{r }
 #AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
-plot(Specimen1$extension_de_traccion, Specimen1$carga,  main="Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,1000))
+plot(g1s1$Extension_de_traccion, g1s1$Carga,  main="Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,1000))
 
 #AGREGAMOS SUBLINEAS A LA 'FIGURA'
-lines(Specimen2$extension_de_traccion, Specimen2$carga, lty="dashed")
-lines(Specimen3$extension_de_traccion, Specimen3$carga, lty="dotted") # lty=line type
-lines(Specimen4$extension_de_traccion, Specimen4$carga, lty="dotdash")
-lines(Specimen5$extension_de_traccion, Specimen5$carga, lty="twodash")
+lines(g1s2$Extension_de_traccion, g1s2$Carga, lty="dashed")
+lines(g1s3$Extension_de_traccion, g1s3$Carga, lty="dotted") # lty=line type
+lines(g1s4$Extension_de_traccion, g1s4$Carga, lty="dotdash")
+lines(g1s5$Extension_de_traccion, g1s5$Carga, lty="twodash")
+
+#AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
+text(x=12, y=400,label="s2")
+text(x=13.3, y=410,label="s3")
+text(x=19.1, y=400,label="s5")
+text(x=14.5, y=400,label="s4")
+text(x=15.8, y=600,label="s1")
+```
+
+```{r }
+#GRUPO 2
+#AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
+plot(g2s1$Extension_de_traccion, g2s1$Carga,  main="Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,1000))
+
+#AGREGAMOS SUBLINEAS A LA 'FIGURA'
+lines(g2s2$Extension_de_traccion, g2s2$Carga, lty="dashed")
+lines(g2s3$Extension_de_traccion, g2s3$Carga, lty="dotted") # lty=line type
+lines(g2s4$Extension_de_traccion, g2s4$Carga, lty="dotdash")
+lines(g2s5$Extension_de_traccion, g2s5$Carga, lty="twodash")
+
+#AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
+text(x=12, y=400,label="s2")
+text(x=13.3, y=410,label="s3")
+text(x=19.1, y=400,label="s5")
+text(x=14.5, y=400,label="s4")
+text(x=15.8, y=600,label="s1")
+```
+
+```{r }
+#GRUPO 3
+#AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
+plot(g3s1$Extension_de_traccion, g3s1$Carga,  main="Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,2000))
+
+#AGREGAMOS SUBLINEAS A LA 'FIGURA'
+lines(g3s2$Extension_de_traccion, g3s2$Carga, lty="dashed")
+lines(g3s3$Extension_de_traccion, g3s3$Carga, lty="dotted") # lty=line type
+lines(g3s4$Extension_de_traccion, g3s4$Carga, lty="dotdash")
+lines(g3s5$Extension_de_traccion, g3s5$Carga, lty="twodash")
+#AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
+text(x=12, y=400,label="s2")
+text(x=13.3, y=410,label="s3")
+text(x=19.1, y=400,label="s5")
+text(x=14.5, y=400,label="s4")
+text(x=15.8, y=600,label="s1")
+```
+
+```{r }
+#GRUPO 4
+#AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
+plot(g4s1$Extension_de_traccion, g4s1$Carga,  main="Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,1000))
+
+#AGREGAMOS SUBLINEAS A LA 'FIGURA'
+lines(g4s2$Extension_de_traccion, g4s2$Carga, lty="dashed")
+lines(g4s3$Extension_de_traccion, g4s3$Carga, lty="dotted") # lty=line type
+lines(g4s4$Extension_de_traccion, g4s4$Carga, lty="dotdash")
+lines(g4s5$Extension_de_traccion, g4s5$Carga, lty="twodash")
 
 #AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
 text(x=12, y=400,label="s2")
@@ -90,39 +187,76 @@ text(x=15.8, y=600,label="s1")
 ```
 
 
-
 # GRAFICA 2: LIMPIAR DATOS ATIPICOS
 ```{r}
 #debido a que R es diferente de excel, lo más facil y además en este caso no se afecta la grŕafica al eliminar estos vaores que en el momento d emedición perdieron su '.' decimal. LOS DATOS DEBEN TENER PUNTOS'.' no comas ',', ya que el archivo CSV utiliza ',' para separar cada campo del dataframe
 
-Specimen1=Specimen1[Specimen1$esfuerzo_de_traccion<1000,]
-Specimen1=Specimen1[Specimen1$desplazamiento_deformacion_uno<5,]
+g1s1=g1s1[g1s1$Esfuerzo_de_traccion<1000,]
+g1s1=g1s1[g1s1$Desplazamiento_Deformacion_uno<5,]
+g1s2=g1s2[g1s2$Esfuerzo_de_traccion<1000,]
+g1s2=g1s2[g1s2$Desplazamiento_Deformacion_uno<5,]
+g1s3=g1s3[g1s3$Esfuerzo_de_traccion<1000,]
+g1s3=g1s3[g1s3$Desplazamiento_Deformacion_uno<5,]
+g1s4=g1s4[g1s4$Esfuerzo_de_traccion<1000,]
+g1s4=g1s4[g1s4$Desplazamiento_Deformacion_uno<5,]
+g1s5=g1s5[g1s5$Esfuerzo_de_traccion<800,]
+g1s5=g1s5[g1s5$Desplazamiento_Deformacion_uno<5,]
 
-Specimen2=Specimen2[Specimen2$esfuerzo_de_traccion<1000,]
-Specimen2=Specimen2[Specimen2$desplazamiento_deformacion_uno<5,]
 
-Specimen3=Specimen3[Specimen3$esfuerzo_de_traccion<1000,]
-Specimen3=Specimen3[Specimen3$desplazamiento_deformacion_uno<5,]
+g2s1=g2s1[g2s1$Esfuerzo_de_traccion<1000,]
+g2s1=g2s1[g2s1$Desplazamiento_Deformacion_uno<5,]
+g2s2=g2s2[g2s2$Esfuerzo_de_traccion<1000,]
+g2s2=g2s2[g2s2$Desplazamiento_Deformacion_uno<5,]
+g2s3=g2s3[g2s3$Esfuerzo_de_traccion<1000,]
+g2s3=g2s3[g2s3$Desplazamiento_Deformacion_uno<5,]
+g2s4=g2s4[g2s4$Esfuerzo_de_traccion<1000,]
+g2s4=g2s4[g2s4$Desplazamiento_Deformacion_uno<5,]
+g2s5=g2s5[g2s5$Esfuerzo_de_traccion<800,]
+g2s5=g2s5[g2s5$Desplazamiento_Deformacion_uno<5,]
 
-Specimen4=Specimen4[Specimen4$esfuerzo_de_traccion<1000,]
-Specimen4=Specimen4[Specimen4$desplazamiento_deformacion_uno<5,]
 
-Specimen5=Specimen5[Specimen5$esfuerzo_de_traccion<800,]
-Specimen5=Specimen5[Specimen5$desplazamiento_deformacion_uno<5,]
+
+g3s1=g3s1[g3s1$Esfuerzo_de_traccion<1000,]
+g3s1=g3s1[g3s1$Desplazamiento_Deformacion_uno<5,]
+g3s2=g3s2[g3s2$Esfuerzo_de_traccion<1000,]
+g3s2=g3s2[g3s2$Desplazamiento_Deformacion_uno<5,]
+g3s3=g3s3[g3s3$Esfuerzo_de_traccion<1000,]
+g3s3=g3s3[g3s3$Desplazamiento_Deformacion_uno<5,]
+g3s4=g3s4[g3s4$Esfuerzo_de_traccion<1000,]
+g3s4=g3s4[g3s4$Desplazamiento_Deformacion_uno<5,]
+g3s5=g3s5[g3s5$Esfuerzo_de_traccion<800,]
+g3s5=g3s5[g3s5$Desplazamiento_Deformacion_uno<5,]
+
+
+
+g4s1=g4s1[g4s1$Esfuerzo_de_traccion<1000,]
+g4s1=g4s1[g4s1$Desplazamiento_Deformacion_uno<5,]
+g4s2=g4s2[g4s2$Esfuerzo_de_traccion<1000,]
+g4s2=g4s2[g4s2$Desplazamiento_Deformacion_uno<5,]
+g4s3=g4s3[g4s3$Esfuerzo_de_traccion<1000,]
+g4s3=g4s3[g4s3$Desplazamiento_Deformacion_uno<5,]
+g4s4=g4s4[g4s4$Esfuerzo_de_traccion<1000,]
+g4s4=g4s4[g4s4$Desplazamiento_Deformacion_uno<5,]
+g4s5=g4s5[g4s5$Esfuerzo_de_traccion<800,]
+g4s5=g4s5[g4s5$Desplazamiento_Deformacion_uno<5,]
 
 ```
 
 ## GRAFICAMOS: Esfuerzo traccion vs Desplazamiento deformacion
 
 ```{r }
+
+par(mfrow = c(2,2))
+
+#GRUPO 1
 #AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
-plot(Specimen1$desplazamiento_deformacion_uno, Specimen1$esfuerzo_de_traccion,  main="Esfuerzo traccion vs Desplazamiento deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
+plot(g1s1$Desplazamiento_Deformacion_uno, g1s1$Esfuerzo_de_traccion,  main="Esfuerzo traccion vs Desplazamiento deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
 
 #AGREGAMOS SUBLINEAS A LA 'FIGURA'
-lines(Specimen2$desplazamiento_deformacion_uno, Specimen2$esfuerzo_de_traccion, lty="dashed")
-lines(Specimen3$desplazamiento_deformacion_uno, Specimen3$esfuerzo_de_traccion, lty="dotted") # lty=line type
-lines(Specimen4$desplazamiento_deformacion_uno, Specimen4$esfuerzo_de_traccion, lty="dotdash")
-lines(Specimen5$desplazamiento_deformacion_uno, Specimen5$esfuerzo_de_traccion, lty="twodash")
+lines(g1s2$Desplazamiento_Deformacion_uno, g1s2$Esfuerzo_de_traccion, lty="dashed")
+lines(g1s3$Desplazamiento_Deformacion_uno, g1s3$Esfuerzo_de_traccion, lty="dotted") # lty=line type
+lines(g1s4$Desplazamiento_Deformacion_uno, g1s4$Esfuerzo_de_traccion, lty="dotdash")
+lines(g1s5$Desplazamiento_Deformacion_uno, g1s5$Esfuerzo_de_traccion, lty="twodash")
 
 #AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
 text(x=2, y=15,label="s2")
@@ -132,22 +266,128 @@ text(x=4.9, y=20.1,label="s5")
 text(x=4.7, y=14,label="s1")
 
 #AGREGAMOS LINEAS VERTICALES PARA SEÑALAR LA REGION ELASTICA
-n1=length(Specimen1$desplazamiento_deformacion_uno)
+n1=length(g1s1$Desplazamiento_Deformacion_uno)
 low_band=n1*0.05
 high_band=n1*0.25
 
-abline(v=Specimen1$desplazamiento_deformacion_uno[low_band], col="blue")
-abline(v=Specimen1$desplazamiento_deformacion_uno[high_band], col="blue")
-abline(v=Specimen2$desplazamiento_deformacion_uno[low_band], col="red")
-abline(v=Specimen2$desplazamiento_deformacion_uno[high_band], col="red")
-abline(v=Specimen2$desplazamiento_deformacion_uno[low_band], col="red")
-abline(v=Specimen2$desplazamiento_deformacion_uno[high_band], col="red")
-abline(v=Specimen2$desplazamiento_deformacion_uno[low_band], col="yellow")
-abline(v=Specimen2$desplazamiento_deformacion_uno[high_band], col="yellow")
-abline(v=Specimen2$desplazamiento_deformacion_uno[low_band], col="green")
-abline(v=Specimen2$desplazamiento_deformacion_uno[high_band], col="green")
+abline(v=g1s1$Desplazamiento_Deformacion_uno[low_band], col="blue")
+abline(v=g1s1$Desplazamiento_Deformacion_uno[high_band], col="blue")
+abline(v=g1s2$Desplazamiento_Deformacion_uno[low_band], col="red")
+abline(v=g1s2$Desplazamiento_Deformacion_uno[high_band], col="red")
+abline(v=g1s3$Desplazamiento_Deformacion_uno[low_band], col="red")
+abline(v=g1s3$Desplazamiento_Deformacion_uno[high_band], col="red")
+abline(v=g1s4$Desplazamiento_Deformacion_uno[low_band], col="yellow")
+abline(v=g1s4$Desplazamiento_Deformacion_uno[high_band], col="yellow")
+abline(v=g1s5$Desplazamiento_Deformacion_uno[low_band], col="green")
+abline(v=g1s5$Desplazamiento_Deformacion_uno[high_band], col="green")
 
+
+
+
+#GRUPO 2
+#AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
+plot(g2s1$Desplazamiento_Deformacion_uno, g2s1$Esfuerzo_de_traccion,  main="Esfuerzo traccion vs Desplazamiento deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
+
+#AGREGAMOS SUBLINEAS A LA 'FIGURA'
+lines(g2s2$Desplazamiento_Deformacion_uno, g2s2$Esfuerzo_de_traccion, lty="dashed")
+lines(g2s3$Desplazamiento_Deformacion_uno, g2s3$Esfuerzo_de_traccion, lty="dotted") # lty=line type
+lines(g2s4$Desplazamiento_Deformacion_uno, g2s4$Esfuerzo_de_traccion, lty="dotdash")
+lines(g2s5$Desplazamiento_Deformacion_uno, g2s5$Esfuerzo_de_traccion, lty="twodash")
+
+#AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
+text(x=2, y=15,label="s2")
+text(x=3.24, y=12,label="s3")
+text(x=3.85, y=13,label="s4")
+text(x=4.9, y=20.1,label="s5")
+text(x=4.7, y=14,label="s1")
+
+#AGREGAMOS LINEAS VERTICALES PARA SEÑALAR LA REGION ELASTICA
+n1=length(g2s1$Desplazamiento_Deformacion_uno)
+low_band=n1*0.05
+high_band=n1*0.25
+
+abline(v=g2s1$Desplazamiento_Deformacion_uno[low_band], col="blue")
+abline(v=g2s1$Desplazamiento_Deformacion_uno[high_band], col="blue")
+abline(v=g2s2$Desplazamiento_Deformacion_uno[low_band], col="red")
+abline(v=g2s2$Desplazamiento_Deformacion_uno[high_band], col="red")
+abline(v=g2s3$Desplazamiento_Deformacion_uno[low_band], col="red")
+abline(v=g2s3$Desplazamiento_Deformacion_uno[high_band], col="red")
+abline(v=g2s4$Desplazamiento_Deformacion_uno[low_band], col="yellow")
+abline(v=g2s4$Desplazamiento_Deformacion_uno[high_band], col="yellow")
+abline(v=g2s5$Desplazamiento_Deformacion_uno[low_band], col="green")
+abline(v=g2s5$Desplazamiento_Deformacion_uno[high_band], col="green")
+
+
+
+#GRUPO 3
+#AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
+plot(g3s1$Desplazamiento_Deformacion_uno, g3s1$Esfuerzo_de_traccion,  main="Esfuerzo traccion vs Desplazamiento deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
+
+#AGREGAMOS SUBLINEAS A LA 'FIGURA'
+lines(g3s2$Desplazamiento_Deformacion_uno, g3s2$Esfuerzo_de_traccion, lty="dashed")
+lines(g3s3$Desplazamiento_Deformacion_uno, g3s3$Esfuerzo_de_traccion, lty="dotted") # lty=line type
+lines(g3s4$Desplazamiento_Deformacion_uno, g3s4$Esfuerzo_de_traccion, lty="dotdash")
+lines(g3s5$Desplazamiento_Deformacion_uno, g3s5$Esfuerzo_de_traccion, lty="twodash")
+
+#AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
+text(x=2, y=15,label="s2")
+text(x=3.24, y=12,label="s3")
+text(x=3.85, y=13,label="s4")
+text(x=4.9, y=20.1,label="s5")
+text(x=4.7, y=14,label="s1")
+
+#AGREGAMOS LINEAS VERTICALES PARA SEÑALAR LA REGION ELASTICA
+n1=length(g3s1$Desplazamiento_Deformacion_uno)
+low_band=n1*0.05
+high_band=n1*0.25
+
+abline(v=g3s1$Desplazamiento_Deformacion_uno[low_band], col="blue")
+abline(v=g3s1$Desplazamiento_Deformacion_uno[high_band], col="blue")
+abline(v=g3s2$Desplazamiento_Deformacion_uno[low_band], col="red")
+abline(v=g3s2$Desplazamiento_Deformacion_uno[high_band], col="red")
+abline(v=g3s3$Desplazamiento_Deformacion_uno[low_band], col="red")
+abline(v=g3s3$Desplazamiento_Deformacion_uno[high_band], col="red")
+abline(v=g3s4$Desplazamiento_Deformacion_uno[low_band], col="yellow")
+abline(v=g3s4$Desplazamiento_Deformacion_uno[high_band], col="yellow")
+abline(v=g3s5$Desplazamiento_Deformacion_uno[low_band], col="green")
+abline(v=g3s5$Desplazamiento_Deformacion_uno[high_band], col="green")
+
+
+
+#GRUPO 4
+#AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
+plot(g4s1$Desplazamiento_Deformacion_uno, g4s1$Esfuerzo_de_traccion,  main="Esfuerzo traccion vs Desplazamiento deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
+
+#AGREGAMOS SUBLINEAS A LA 'FIGURA'
+lines(g4s2$Desplazamiento_Deformacion_uno, g4s2$Esfuerzo_de_traccion, lty="dashed")
+lines(g4s3$Desplazamiento_Deformacion_uno, g4s3$Esfuerzo_de_traccion, lty="dotted") # lty=line type
+lines(g4s4$Desplazamiento_Deformacion_uno, g4s4$Esfuerzo_de_traccion, lty="dotdash")
+lines(g4s5$Desplazamiento_Deformacion_uno, g4s5$Esfuerzo_de_traccion, lty="twodash")
+
+#AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
+text(x=2, y=15,label="s2")
+text(x=3.24, y=12,label="s3")
+text(x=3.85, y=13,label="s4")
+text(x=4.9, y=20.1,label="s5")
+text(x=4.7, y=14,label="s1")
+
+#AGREGAMOS LINEAS VERTICALES PARA SEÑALAR LA REGION ELASTICA
+n1=length(g4s1$Desplazamiento_Deformacion_uno)
+low_band=n1*0.05
+high_band=n1*0.25
+
+abline(v=g4s1$Desplazamiento_Deformacion_uno[low_band], col="blue")
+abline(v=g4s1$Desplazamiento_Deformacion_uno[high_band], col="blue")
+abline(v=g4s2$Desplazamiento_Deformacion_uno[low_band], col="red")
+abline(v=g4s2$Desplazamiento_Deformacion_uno[high_band], col="red")
+abline(v=g4s3$Desplazamiento_Deformacion_uno[low_band], col="red")
+abline(v=g4s3$Desplazamiento_Deformacion_uno[high_band], col="red")
+abline(v=g4s4$Desplazamiento_Deformacion_uno[low_band], col="yellow")
+abline(v=g4s4$Desplazamiento_Deformacion_uno[high_band], col="yellow")
+abline(v=g4s5$Desplazamiento_Deformacion_uno[low_band], col="green")
+abline(v=g4s5$Desplazamiento_Deformacion_uno[high_band], col="green")
 ```
+
 
 
 
@@ -253,6 +493,15 @@ beginning_mods_results = data.frame(
 library(knitr)
 kable(beginning_mods_results, align = c("c", "r"))
 ```
+
+
+
+
+
+
+
+
+
 
 
 
