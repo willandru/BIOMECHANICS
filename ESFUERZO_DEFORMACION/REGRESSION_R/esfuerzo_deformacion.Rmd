@@ -70,6 +70,7 @@ g2s1=g2s1[g2s1$Carga<10000,]
 g2s1=g2s1[g2s1$Extension_de_traccion<20,]
 g2s2=g2s2[g2s2$Carga<10000,]
 g2s2=g2s2[g2s2$Extension_de_traccion<20,]
+g2s2=tail(g2s2, -2)
 g2s3=g2s3[g2s3$Carga<10000,]
 g2s3=g2s3[g2s3$Extension_de_traccion<20,]
 g2s4=g2s4[g2s4$Carga<10000,]
@@ -84,8 +85,10 @@ g2s5=g2s5[g2s5$Extension_de_traccion<20,]
 
 g3s1=g3s1[g3s1$Carga<15000,]
 g3s1=g3s1[g3s1$Extension_de_traccion<20,]
+g3s1=tail(g3s1, -2)
 g3s2=g3s2[g3s2$Carga<10000,]
 g3s2=g3s2[g3s2$Extension_de_traccion<20,]
+g3s2=tail(g3s2, -2)
 g3s3=g3s3[g3s3$Carga<2000,]
 g3s3=g3s3[g3s3$Extension_de_traccion<20,]
 g3s4=g3s4[g3s4$Carga<10000,]
@@ -93,6 +96,7 @@ g3s4=g3s4[g3s4$Extension_de_traccion<20,]
 g3s4=tail(g3s4, -2)
 g3s5=g3s5[g3s5$Carga<10000,]
 g3s5=g3s5[g3s5$Extension_de_traccion<20,]
+g3s5=tail(g3s5, -2)
 
 #GRUPO 4 
 #debido a que R es diferente de excel, lo más facil y además en este caso no se afecta la grŕafica al eliminar estos vaores que en el momento d emedición perdieron su '.' decimal. LOS DATOS DEBEN TENER PUNTOS'.' no comas ',', ya que el archivo CSV utiliza ',' para separar cada campo del dataframe
@@ -101,6 +105,7 @@ g4s1=g4s1[g4s1$Carga<10000,]
 g4s1=g4s1[g4s1$Extension_de_traccion<20,]
 g4s2=g4s2[g4s2$Carga<10000,]
 g4s2=g4s2[g4s2$Extension_de_traccion<20,]
+g4s2=tail(g4s2, -2)
 g4s3=g4s3[g4s3$Carga<10000,]
 g4s3=g4s3[g4s3$Extension_de_traccion<20,]
 g4s4=g4s4[g4s4$Carga<10000,]
@@ -113,8 +118,12 @@ g4s5=g4s5[g4s5$Extension_de_traccion<20,]
 ## GRAFICAMOS: CARGA vs EXTENSION_DE_TRACCION
 
 ```{r }
+
+par(mfrow = c(2,2))
+
+
 #AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
-plot(g1s1$Extension_de_traccion, g1s1$Carga,  main="Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,1000))
+plot(g1s1$Extension_de_traccion, g1s1$Carga,  main="G-1 PLLA 60%: Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,1000))
 
 #AGREGAMOS SUBLINEAS A LA 'FIGURA'
 lines(g1s2$Extension_de_traccion, g1s2$Carga, lty="dashed")
@@ -128,12 +137,14 @@ text(x=13.3, y=410,label="s3")
 text(x=19.1, y=400,label="s5")
 text(x=14.5, y=400,label="s4")
 text(x=15.8, y=600,label="s1")
-```
 
-```{r }
+
+
+
+
 #GRUPO 2
 #AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
-plot(g2s1$Extension_de_traccion, g2s1$Carga,  main="Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,1000))
+plot(g2s1$Extension_de_traccion, g2s1$Carga,  main="G-2 PLLA X%: Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,1000))
 
 #AGREGAMOS SUBLINEAS A LA 'FIGURA'
 lines(g2s2$Extension_de_traccion, g2s2$Carga, lty="dashed")
@@ -142,17 +153,19 @@ lines(g2s4$Extension_de_traccion, g2s4$Carga, lty="dotdash")
 lines(g2s5$Extension_de_traccion, g2s5$Carga, lty="twodash")
 
 #AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
-text(x=12, y=400,label="s2")
-text(x=13.3, y=410,label="s3")
-text(x=19.1, y=400,label="s5")
-text(x=14.5, y=400,label="s4")
-text(x=15.8, y=600,label="s1")
-```
+text(x=19.1, y=400,label="s2")
+text(x=14.7, y=410,label="s3")
+text(x=16, y=400,label="s5")
+text(x=11.7, y=400,label="s4")
+text(x=10.7, y=300,label="s1")
 
-```{r }
+
+
+
+
 #GRUPO 3
 #AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
-plot(g3s1$Extension_de_traccion, g3s1$Carga,  main="Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,2000))
+plot(g3s1$Extension_de_traccion, g3s1$Carga,  main="G-3 PLLA X%: Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,2000))
 
 #AGREGAMOS SUBLINEAS A LA 'FIGURA'
 lines(g3s2$Extension_de_traccion, g3s2$Carga, lty="dashed")
@@ -160,17 +173,19 @@ lines(g3s3$Extension_de_traccion, g3s3$Carga, lty="dotted") # lty=line type
 lines(g3s4$Extension_de_traccion, g3s4$Carga, lty="dotdash")
 lines(g3s5$Extension_de_traccion, g3s5$Carga, lty="twodash")
 #AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
-text(x=12, y=400,label="s2")
-text(x=13.3, y=410,label="s3")
-text(x=19.1, y=400,label="s5")
-text(x=14.5, y=400,label="s4")
-text(x=15.8, y=600,label="s1")
-```
+text(x=10.2, y=400,label="s1")
+text(x=11.1, y=410,label="s3")
+text(x=11.3, y=600,label="s5")
+text(x=14.5, y=400,label="s2")
+text(x=9.2, y=600,label="s4")
 
-```{r }
+
+
+
+
 #GRUPO 4
 #AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
-plot(g4s1$Extension_de_traccion, g4s1$Carga,  main="Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,1000))
+plot(g4s1$Extension_de_traccion, g4s1$Carga,  main="G-4 PLLA X%: Carga vs Extensión de tracción", xlab= "Extensión de Tracción [mm]", ylab= "Carga [N]", type="l", xlim=c(0,20), ylim=c(0,1000))
 
 #AGREGAMOS SUBLINEAS A LA 'FIGURA'
 lines(g4s2$Extension_de_traccion, g4s2$Carga, lty="dashed")
@@ -179,12 +194,13 @@ lines(g4s4$Extension_de_traccion, g4s4$Carga, lty="dotdash")
 lines(g4s5$Extension_de_traccion, g4s5$Carga, lty="twodash")
 
 #AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
-text(x=12, y=400,label="s2")
-text(x=13.3, y=410,label="s3")
-text(x=19.1, y=400,label="s5")
-text(x=14.5, y=400,label="s4")
-text(x=15.8, y=600,label="s1")
+text(x=10.6, y=280,label="s2")
+text(x=10.2, y=410,label="s3")
+text(x=9.4, y=440,label="s5")
+text(x=8.8, y=400,label="s4")
+text(x=11, y=600,label="s1")
 ```
+
 
 
 # GRAFICA 2: LIMPIAR DATOS ATIPICOS
@@ -207,6 +223,7 @@ g2s1=g2s1[g2s1$Esfuerzo_de_traccion<1000,]
 g2s1=g2s1[g2s1$Desplazamiento_Deformacion_uno<5,]
 g2s2=g2s2[g2s2$Esfuerzo_de_traccion<1000,]
 g2s2=g2s2[g2s2$Desplazamiento_Deformacion_uno<5,]
+g2s2=head(g2s2, -18)
 g2s3=g2s3[g2s3$Esfuerzo_de_traccion<1000,]
 g2s3=g2s3[g2s3$Desplazamiento_Deformacion_uno<5,]
 g2s4=g2s4[g2s4$Esfuerzo_de_traccion<1000,]
@@ -250,32 +267,28 @@ par(mfrow = c(2,2))
 
 #GRUPO 1
 #AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
-plot(g1s1$Desplazamiento_Deformacion_uno, g1s1$Esfuerzo_de_traccion,  main="Esfuerzo traccion vs Desplazamiento deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
-
+plot(g1s1$Desplazamiento_Deformacion_uno, g1s1$Esfuerzo_de_traccion,  main="G-1 PLLA 60% : Esfuerzo vs Deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
 #AGREGAMOS SUBLINEAS A LA 'FIGURA'
 lines(g1s2$Desplazamiento_Deformacion_uno, g1s2$Esfuerzo_de_traccion, lty="dashed")
 lines(g1s3$Desplazamiento_Deformacion_uno, g1s3$Esfuerzo_de_traccion, lty="dotted") # lty=line type
 lines(g1s4$Desplazamiento_Deformacion_uno, g1s4$Esfuerzo_de_traccion, lty="dotdash")
 lines(g1s5$Desplazamiento_Deformacion_uno, g1s5$Esfuerzo_de_traccion, lty="twodash")
-
 #AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
 text(x=2, y=15,label="s2")
 text(x=3.24, y=12,label="s3")
 text(x=3.85, y=13,label="s4")
 text(x=4.9, y=20.1,label="s5")
 text(x=4.7, y=14,label="s1")
-
 #AGREGAMOS LINEAS VERTICALES PARA SEÑALAR LA REGION ELASTICA
 n1=length(g1s1$Desplazamiento_Deformacion_uno)
 low_band=n1*0.05
-high_band=n1*0.25
-
+high_band=n1*0.2
 abline(v=g1s1$Desplazamiento_Deformacion_uno[low_band], col="blue")
 abline(v=g1s1$Desplazamiento_Deformacion_uno[high_band], col="blue")
 abline(v=g1s2$Desplazamiento_Deformacion_uno[low_band], col="red")
 abline(v=g1s2$Desplazamiento_Deformacion_uno[high_band], col="red")
-abline(v=g1s3$Desplazamiento_Deformacion_uno[low_band], col="red")
-abline(v=g1s3$Desplazamiento_Deformacion_uno[high_band], col="red")
+abline(v=g1s3$Desplazamiento_Deformacion_uno[low_band], col="lightsalmon")
+abline(v=g1s3$Desplazamiento_Deformacion_uno[high_band], col="lightsalmon")
 abline(v=g1s4$Desplazamiento_Deformacion_uno[low_band], col="yellow")
 abline(v=g1s4$Desplazamiento_Deformacion_uno[high_band], col="yellow")
 abline(v=g1s5$Desplazamiento_Deformacion_uno[low_band], col="green")
@@ -286,26 +299,22 @@ abline(v=g1s5$Desplazamiento_Deformacion_uno[high_band], col="green")
 
 #GRUPO 2
 #AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
-plot(g2s1$Desplazamiento_Deformacion_uno, g2s1$Esfuerzo_de_traccion,  main="Esfuerzo traccion vs Desplazamiento deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
-
+plot(g2s1$Desplazamiento_Deformacion_uno, g2s1$Esfuerzo_de_traccion,  main="G-2 PLLA X% : Esfuerzo vs Deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25), xlim = c(0,4))
 #AGREGAMOS SUBLINEAS A LA 'FIGURA'
-lines(g2s2$Desplazamiento_Deformacion_uno, g2s2$Esfuerzo_de_traccion, lty="dashed")
+#lines(g2s2$Desplazamiento_Deformacion_uno, g2s2$Esfuerzo_de_traccion, lty="dashed")
 lines(g2s3$Desplazamiento_Deformacion_uno, g2s3$Esfuerzo_de_traccion, lty="dotted") # lty=line type
 lines(g2s4$Desplazamiento_Deformacion_uno, g2s4$Esfuerzo_de_traccion, lty="dotdash")
 lines(g2s5$Desplazamiento_Deformacion_uno, g2s5$Esfuerzo_de_traccion, lty="twodash")
-
 #AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
 text(x=2, y=15,label="s2")
 text(x=3.24, y=12,label="s3")
 text(x=3.85, y=13,label="s4")
 text(x=4.9, y=20.1,label="s5")
 text(x=4.7, y=14,label="s1")
-
 #AGREGAMOS LINEAS VERTICALES PARA SEÑALAR LA REGION ELASTICA
 n1=length(g2s1$Desplazamiento_Deformacion_uno)
 low_band=n1*0.05
 high_band=n1*0.25
-
 abline(v=g2s1$Desplazamiento_Deformacion_uno[low_band], col="blue")
 abline(v=g2s1$Desplazamiento_Deformacion_uno[high_band], col="blue")
 abline(v=g2s2$Desplazamiento_Deformacion_uno[low_band], col="red")
@@ -318,29 +327,24 @@ abline(v=g2s5$Desplazamiento_Deformacion_uno[low_band], col="green")
 abline(v=g2s5$Desplazamiento_Deformacion_uno[high_band], col="green")
 
 
-
 #GRUPO 3
 #AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
-plot(g3s1$Desplazamiento_Deformacion_uno, g3s1$Esfuerzo_de_traccion,  main="Esfuerzo traccion vs Desplazamiento deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
-
+plot(g3s1$Desplazamiento_Deformacion_uno, g3s1$Esfuerzo_de_traccion,  main="G-3 PLLA X% : Esfuerzo vs Deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,50))
 #AGREGAMOS SUBLINEAS A LA 'FIGURA'
 lines(g3s2$Desplazamiento_Deformacion_uno, g3s2$Esfuerzo_de_traccion, lty="dashed")
 lines(g3s3$Desplazamiento_Deformacion_uno, g3s3$Esfuerzo_de_traccion, lty="dotted") # lty=line type
 lines(g3s4$Desplazamiento_Deformacion_uno, g3s4$Esfuerzo_de_traccion, lty="dotdash")
 lines(g3s5$Desplazamiento_Deformacion_uno, g3s5$Esfuerzo_de_traccion, lty="twodash")
-
 #AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
 text(x=2, y=15,label="s2")
 text(x=3.24, y=12,label="s3")
 text(x=3.85, y=13,label="s4")
 text(x=4.9, y=20.1,label="s5")
 text(x=4.7, y=14,label="s1")
-
 #AGREGAMOS LINEAS VERTICALES PARA SEÑALAR LA REGION ELASTICA
 n1=length(g3s1$Desplazamiento_Deformacion_uno)
 low_band=n1*0.05
 high_band=n1*0.25
-
 abline(v=g3s1$Desplazamiento_Deformacion_uno[low_band], col="blue")
 abline(v=g3s1$Desplazamiento_Deformacion_uno[high_band], col="blue")
 abline(v=g3s2$Desplazamiento_Deformacion_uno[low_band], col="red")
@@ -356,7 +360,7 @@ abline(v=g3s5$Desplazamiento_Deformacion_uno[high_band], col="green")
 
 #GRUPO 4
 #AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
-plot(g4s1$Desplazamiento_Deformacion_uno, g4s1$Esfuerzo_de_traccion,  main="Esfuerzo traccion vs Desplazamiento deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
+plot(g4s1$Desplazamiento_Deformacion_uno, g4s1$Esfuerzo_de_traccion,  main="G-4 PLLA X% : Esfuerzo vs Deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,30))
 
 #AGREGAMOS SUBLINEAS A LA 'FIGURA'
 lines(g4s2$Desplazamiento_Deformacion_uno, g4s2$Esfuerzo_de_traccion, lty="dashed")
@@ -389,6 +393,44 @@ abline(v=g4s5$Desplazamiento_Deformacion_uno[high_band], col="green")
 ```
 
 
+```{r }
+
+#GRUPO 1
+#AGREGAMOS LA GRÁFICA O 'FIGURA' PRINCIPAL
+plot(g1s1$Desplazamiento_Deformacion_uno, g1s1$Esfuerzo_de_traccion,  main="PLLA 60% : Esfuerzo vs Deformacion", xlab= " Desplazamiento Deformación 1 [mm]", ylab= "Esfuerzo de tracción [MPa]", type="l", ylim=c(0,25))
+#AGREGAMOS SUBLINEAS A LA 'FIGURA'
+lines(g1s2$Desplazamiento_Deformacion_uno, g1s2$Esfuerzo_de_traccion, lty="dashed")
+lines(g1s3$Desplazamiento_Deformacion_uno, g1s3$Esfuerzo_de_traccion, lty="dotted") # lty=line type
+lines(g1s4$Desplazamiento_Deformacion_uno, g1s4$Esfuerzo_de_traccion, lty="dotdash")
+lines(g1s5$Desplazamiento_Deformacion_uno, g1s5$Esfuerzo_de_traccion, lty="twodash")
+#AGREGAMOS TEXTO ALEATORIO SOBRE UNAS COORDENADAS X,Y
+text(x=2, y=15,label="s2")
+text(x=3.24, y=12,label="s3")
+text(x=3.85, y=13,label="s4")
+text(x=4.9, y=20.1,label="s5")
+text(x=4.7, y=14,label="s1")
+#AGREGAMOS LINEAS VERTICALES PARA SEÑALAR LA REGION ELASTICA
+n1=length(g1s1$Desplazamiento_Deformacion_uno)
+low_band=n1*0.05
+high_band=n1*0.2
+abline(v=g1s1$Desplazamiento_Deformacion_uno[low_band], col="blue")
+abline(v=g1s1$Desplazamiento_Deformacion_uno[high_band], col="blue")
+abline(v=g1s2$Desplazamiento_Deformacion_uno[low_band], col="red")
+abline(v=g1s2$Desplazamiento_Deformacion_uno[high_band], col="red")
+abline(v=g1s3$Desplazamiento_Deformacion_uno[low_band], col="lightsalmon")
+abline(v=g1s3$Desplazamiento_Deformacion_uno[high_band], col="lightsalmon")
+abline(v=g1s4$Desplazamiento_Deformacion_uno[low_band], col="yellow")
+abline(v=g1s4$Desplazamiento_Deformacion_uno[high_band], col="yellow")
+abline(v=g1s5$Desplazamiento_Deformacion_uno[low_band], col="green")
+abline(v=g1s5$Desplazamiento_Deformacion_uno[high_band], col="green")
+
+
+```
+
+
+
+
+
 
 
 # REGRESION LINEAL: DETERMINAR EL MODULO DE YOUN DE LA ZONA ELASTICA
@@ -398,47 +440,142 @@ abline(v=g4s5$Desplazamiento_Deformacion_uno[high_band], col="green")
 ```{r}
 #EXTRAEMOS LAS COLUMNAS Y FILAS QUE UTILIZAREMOS PARA HACER LA REGRESIÓN: Recortamos filas porque solo queremos la region elastica, recortamos columnas porque queremos ajustar la recta con un porcentaje especifico de los Datos según la norma ISO 527
 
-deformacion_specimen1=Specimen1$desplazamiento_deformacion_uno
-n1=length(Specimen1$desplazamiento_deformacion_uno)
+#GRUPO 1
+
+n1=length(g1s1$Desplazamiento_Deformacion_uno)
 low_band=n1*0.05
 high_band=n1*0.25
-deformacion_specimen1=deformacion_specimen1[low_band:high_band]
 
-esfuerzo_specimen1=Specimen1$esfuerzo_de_traccion
-esfuerzo_specimen1=esfuerzo_specimen1[low_band:high_band]
+deformacion_g1s1=g1s1$Desplazamiento_Deformacion_uno
+deformacion_g1s1=deformacion_g1s1[low_band:high_band]
+esfuerzo_g1s1=g1s1$Esfuerzo_de_traccion
+esfuerzo_g1s1=esfuerzo_g1s1[low_band:high_band]
 
-deformacion_specimen2=Specimen2$desplazamiento_deformacion_uno
-deformacion_specimen2=deformacion_specimen2[low_band:high_band]
-esfuerzo_specimen2=Specimen2$esfuerzo_de_traccion
-esfuerzo_specimen2=esfuerzo_specimen2[low_band:high_band]
+deformacion_g1s2=g1s2$Desplazamiento_Deformacion_uno
+deformacion_g1s2=deformacion_g1s2[low_band:high_band]
+esfuerzo_g1s2=g1s2$Esfuerzo_de_traccion
+esfuerzo_g1s2=esfuerzo_g1s2[low_band:high_band]
+
+deformacion_g1s3=g1s3$Desplazamiento_Deformacion_uno
+deformacion_g1s3=deformacion_g1s3[low_band:high_band]
+esfuerzo_g1s3=g1s3$Esfuerzo_de_traccion
+esfuerzo_g1s3=esfuerzo_g1s3[low_band:high_band]
+
+deformacion_g1s4=g1s4$Desplazamiento_Deformacion_uno
+deformacion_g1s4=deformacion_g1s4[low_band:high_band]
+esfuerzo_g1s4=g1s4$Esfuerzo_de_traccion
+esfuerzo_g1s4=esfuerzo_g1s4[low_band:high_band]
+
+deformacion_g1s5=g1s5$Desplazamiento_Deformacion_uno
+deformacion_g1s5=deformacion_g1s5[low_band:high_band]
+esfuerzo_g1s5=g1s5$Esfuerzo_de_traccion
+esfuerzo_g1s5=esfuerzo_g1s5[low_band:high_band]
 
 
-deformacion_specimen3=Specimen3$desplazamiento_deformacion_uno
-deformacion_specimen3=deformacion_specimen3[low_band:high_band]
-esfuerzo_specimen3=Specimen3$esfuerzo_de_traccion
-esfuerzo_specimen3=esfuerzo_specimen3[low_band:high_band]
+#GRUPO 2
+
+n1=length(g2s1$Desplazamiento_Deformacion_uno)
+low_band=n1*0.05
+high_band=n1*0.25
+
+deformacion_g2s1=g2s1$Desplazamiento_Deformacion_uno
+deformacion_g2s1=deformacion_g2s1[low_band:high_band]
+esfuerzo_g2s1=g2s1$Esfuerzo_de_traccion
+esfuerzo_g2s1=esfuerzo_g2s1[low_band:high_band]
+
+deformacion_g2s2=g2s2$Desplazamiento_Deformacion_uno
+deformacion_g2s2=deformacion_g2s2[low_band:high_band]
+esfuerzo_g2s2=g2s2$Esfuerzo_de_traccion
+esfuerzo_g2s2=esfuerzo_g2s2[low_band:high_band]
+
+deformacion_g2s3=g2s3$Desplazamiento_Deformacion_uno
+deformacion_g2s3=deformacion_g2s3[low_band:high_band]
+esfuerzo_g2s3=g2s3$Esfuerzo_de_traccion
+esfuerzo_g2s3=esfuerzo_g2s3[low_band:high_band]
+
+deformacion_g2s4=g2s4$Desplazamiento_Deformacion_uno
+deformacion_g2s4=deformacion_g2s4[low_band:high_band]
+esfuerzo_g2s4=g2s4$Esfuerzo_de_traccion
+esfuerzo_g2s4=esfuerzo_g2s4[low_band:high_band]
+
+deformacion_g2s5=g2s5$Desplazamiento_Deformacion_uno
+deformacion_g2s5=deformacion_g2s5[low_band:high_band]
+esfuerzo_g2s5=g2s5$Esfuerzo_de_traccion
+esfuerzo_g2s5=esfuerzo_g2s5[low_band:high_band]
+
+
+#GRUPO 3
+
+n1=length(g3s1$Desplazamiento_Deformacion_uno)
+low_band=n1*0.05
+high_band=n1*0.25
+
+deformacion_g3s1=g3s1$Desplazamiento_Deformacion_uno
+deformacion_g3s1=deformacion_g3s1[low_band:high_band]
+esfuerzo_g3s1=g3s1$Esfuerzo_de_traccion
+esfuerzo_g3s1=esfuerzo_g3s1[low_band:high_band]
+
+deformacion_g3s2=g3s2$Desplazamiento_Deformacion_uno
+deformacion_g3s2=deformacion_g3s2[low_band:high_band]
+esfuerzo_g3s2=g3s2$Esfuerzo_de_traccion
+esfuerzo_g3s2=esfuerzo_g3s2[low_band:high_band]
+
+deformacion_g3s3=g3s3$Desplazamiento_Deformacion_uno
+deformacion_g3s3=deformacion_g3s3[low_band:high_band]
+esfuerzo_g3s3=g3s3$Esfuerzo_de_traccion
+esfuerzo_g3s3=esfuerzo_g3s3[low_band:high_band]
+
+deformacion_g3s4=g3s4$Desplazamiento_Deformacion_uno
+deformacion_g3s4=deformacion_g3s4[low_band:high_band]
+esfuerzo_g3s4=g3s4$Esfuerzo_de_traccion
+esfuerzo_g3s4=esfuerzo_g3s4[low_band:high_band]
+
+deformacion_g3s5=g3s5$Desplazamiento_Deformacion_uno
+deformacion_g3s5=deformacion_g3s5[low_band:high_band]
+esfuerzo_g3s5=g3s5$Esfuerzo_de_traccion
+esfuerzo_g3s5=esfuerzo_g3s5[low_band:high_band]
 
 
 
-deformacion_specimen4=Specimen4$desplazamiento_deformacion_uno
-deformacion_specimen4=deformacion_specimen4[low_band:high_band]
-esfuerzo_specimen4=Specimen4$esfuerzo_de_traccion
-esfuerzo_specimen4=esfuerzo_specimen4[low_band:high_band]
+#GRUPO 4
 
+n1=length(g4s1$Desplazamiento_Deformacion_uno)
+low_band=n1*0.05
+high_band=n1*0.25
 
-deformacion_specimen5=Specimen5$desplazamiento_deformacion_uno
-deformacion_specimen5=deformacion_specimen5[low_band:high_band]
-esfuerzo_specimen5=Specimen5$esfuerzo_de_traccion
-esfuerzo_specimen5=esfuerzo_specimen5[low_band:high_band]
+deformacion_g4s1=g4s1$Desplazamiento_Deformacion_uno
+deformacion_g4s1=deformacion_g4s1[low_band:high_band]
+esfuerzo_g4s1=g4s1$Esfuerzo_de_traccion
+esfuerzo_g4s1=esfuerzo_g4s1[low_band:high_band]
+
+deformacion_g4s2=g4s2$Desplazamiento_Deformacion_uno
+deformacion_g4s2=deformacion_g4s2[low_band:high_band]
+esfuerzo_g4s2=g4s2$Esfuerzo_de_traccion
+esfuerzo_g4s2=esfuerzo_g4s2[low_band:high_band]
+
+deformacion_g4s3=g4s3$Desplazamiento_Deformacion_uno
+deformacion_g4s3=deformacion_g4s3[low_band:high_band]
+esfuerzo_g4s3=g4s3$Esfuerzo_de_traccion
+esfuerzo_g4s3=esfuerzo_g4s3[low_band:high_band]
+
+deformacion_g4s4=g4s4$Desplazamiento_Deformacion_uno
+deformacion_g4s4=deformacion_g4s4[low_band:high_band]
+esfuerzo_g4s4=g4s4$Esfuerzo_de_traccion
+esfuerzo_g4s4=esfuerzo_g4s4[low_band:high_band]
+
+deformacion_g4s5=g4s5$Desplazamiento_Deformacion_uno
+deformacion_g4s5=deformacion_g4s5[low_band:high_band]
+esfuerzo_g4s5=g4s5$Esfuerzo_de_traccion
+esfuerzo_g4s5=esfuerzo_g4s5[low_band:high_band]
 ```
 
 ```{r }
 par(mfrow = c(2,3))
-plot( deformacion_specimen1,  esfuerzo_specimen1)
-plot( deformacion_specimen2,  esfuerzo_specimen2)
-plot( deformacion_specimen3,  esfuerzo_specimen3)
-plot( deformacion_specimen4,  esfuerzo_specimen4)
-plot( deformacion_specimen5,  esfuerzo_specimen5)
+plot( deformacion_g3s1,  esfuerzo_g3s1)
+plot( deformacion_g3s2,  esfuerzo_g3s2)
+plot( deformacion_g3s3,  esfuerzo_g3s3)
+plot( deformacion_g3s4,  esfuerzo_g3s4)
+plot( deformacion_g3s5,  esfuerzo_g3s5)
 
 ```
 
@@ -446,53 +583,298 @@ plot( deformacion_specimen5,  esfuerzo_specimen5)
 
 
 ```{r }
-regresion1= lm(esfuerzo_specimen1 ~ deformacion_specimen1)
-regresion2= lm(esfuerzo_specimen2 ~ deformacion_specimen2)
-regresion3= lm(esfuerzo_specimen3 ~ deformacion_specimen3)
-regresion4= lm(esfuerzo_specimen4 ~ deformacion_specimen4)
-regresion5= lm(esfuerzo_specimen5 ~ deformacion_specimen5)
+g1_r1= lm(esfuerzo_g1s1 ~ deformacion_g1s1)
+g1_r2= lm(esfuerzo_g1s2 ~ deformacion_g1s2)
+g1_r3= lm(esfuerzo_g1s3 ~ deformacion_g1s3)
+g1_r4= lm(esfuerzo_g1s4 ~ deformacion_g1s4)
+g1_r5= lm(esfuerzo_g1s5 ~ deformacion_g1s5)
+
+g2_r1= lm(esfuerzo_g2s1 ~ deformacion_g2s1)
+g2_r2= lm(esfuerzo_g2s2 ~ deformacion_g2s2)
+g2_r3= lm(esfuerzo_g2s3 ~ deformacion_g2s3)
+g2_r4= lm(esfuerzo_g2s4 ~ deformacion_g2s4)
+g2_r5= lm(esfuerzo_g2s5 ~ deformacion_g2s5)
+
+g3_r1= lm(esfuerzo_g3s1 ~ deformacion_g3s1)
+g3_r2= lm(esfuerzo_g3s2 ~ deformacion_g3s2)
+g3_r3= lm(esfuerzo_g3s3 ~ deformacion_g3s3)
+g3_r4= lm(esfuerzo_g3s4 ~ deformacion_g3s4)
+g3_r5= lm(esfuerzo_g3s5 ~ deformacion_g3s5)
+
+g4_r1= lm(esfuerzo_g4s1 ~ deformacion_g4s1)
+g4_r2= lm(esfuerzo_g4s2 ~ deformacion_g4s2)
+g4_r3= lm(esfuerzo_g4s3 ~ deformacion_g4s3)
+g4_r4= lm(esfuerzo_g4s4 ~ deformacion_g4s4)
+g4_r5= lm(esfuerzo_g4s5 ~ deformacion_g4s5)
+
 
 ```
 
 ### RESULTADOS
 
-```{r }
-young1=regresion1$coefficients[2]
-young2=regresion2$coefficients[2]
-young3=regresion3$coefficients[2]
-young4=regresion4$coefficients[2]
-young5=regresion5$coefficients[2]
 
-intervalo1=paste('[',as.character(as.numeric(format(confint(regresion1)[2,][1], nsmall=4))),' , ', as.character(as.numeric(format(confint(regresion1)[2,][2],nsmall=4))), ']', sep="")
-intervalo2=paste('[',as.character(as.numeric(format(confint(regresion2)[2,][1], nsmall=4))),' , ', as.character(as.numeric(format(confint(regresion2)[2,][2],nsmall=4))), ']', sep="")
-intervalo3=paste('[',as.character(as.numeric(format(confint(regresion3)[2,][1], nsmall=4))),' , ', as.character(as.numeric(format(confint(regresion3)[2,][2],nsmall=4))), ']', sep="")
-intervalo4=paste('[',as.character(as.numeric(format(confint(regresion4)[2,][1], nsmall=4))),' , ', as.character(as.numeric(format(confint(regresion4)[2,][2],nsmall=4))), ']', sep="")
-intervalo5=paste('[',as.character(as.numeric(format(confint(regresion5)[2,][1], nsmall=4))),' , ', as.character(as.numeric(format(confint(regresion5)[2,][2],nsmall=4))), ']', sep="")
+```{r }
+g1_young1=g1_r1$coefficients[2]
+g1_young2=g1_r2$coefficients[2]
+g1_young3=g1_r3$coefficients[2]
+g1_young4=g1_r4$coefficients[2]
+g1_young5=g1_r5$coefficients[2]
+
+g2_young1=g2_r1$coefficients[2]
+g2_young2=g2_r2$coefficients[2]
+g2_young3=g2_r3$coefficients[2]
+g2_young4=g2_r4$coefficients[2]
+g2_young5=g2_r5$coefficients[2]
+
+g3_young1=g3_r1$coefficients[2]
+g3_young2=g3_r2$coefficients[2]
+g3_young3=g3_r3$coefficients[2]
+g3_young4=g3_r4$coefficients[2]
+g3_young5=g3_r5$coefficients[2]
+
+g4_young1=g4_r1$coefficients[2]
+g4_young2=g4_r2$coefficients[2]
+g4_young3=g4_r3$coefficients[2]
+g4_young4=g4_r4$coefficients[2]
+g4_young5=g4_r5$coefficients[2]
+
+YOUNG_G1=mean(c(g1_young1,g1_young2,g1_young3,g1_young4, g1_young5))
+STD_YOG_G1=sd(c(g1_young1,g1_young2,g1_young3,g1_young4, g1_young5))
+
+YOUNG_G2=mean(c(g2_young1,g2_young2,g2_young3,g2_young4, g2_young5))
+STD_YOG_G2=sd(c(g2_young1,g2_young2,g2_young3,g1_young4, g2_young5))
+
+YOUNG_G3=mean(c(g3_young1,g3_young2,g3_young3,g3_young4, g3_young5))
+STD_YOG_G3=sd(c(g3_young1,g3_young2,g3_young3,g3_young4, g3_young5))
+
+YOUNG_G4=mean(c(g4_young1,g4_young2,g4_young3,g4_young4, g4_young5))
+STD_YOG_G4=sd(c(g4_young1,g4_young2,g4_young3,g4_young4, g4_young5))
+
 
 
 beginning_mods_results = data.frame(
-  "Modulo_de_Young_[MPa.mm]" =
-    c("Specimen1" = young1,
-      "Specimen2" = young2,
-      "Specimen3" = young3,
-      "Specimen4" = young4,
-      "Specimen5" = young5
+  "Módulo_de_Young_MPa" =
+    c("Grupo1_60" = YOUNG_G1,
+      "Grupo2_40" = YOUNG_G2,
+      "Grupo3_100" = YOUNG_G3,
+      "Grupo4_80" = YOUNG_G4
       
       ),
   
-  "Intervalo_95_confinza" =
-    c("Specimen1" = intervalo1,
-      "Specimen2" = intervalo2,
-      "Specimen3" = intervalo3,
-      "Specimen4" = intervalo4,
-      "Specimen5" = intervalo5
+  "Desviación_Estandar" =
+    c("Grupo1_60" = STD_YOG_G1,
+      "Grupo2_40" = STD_YOG_G2,
+      "Grupo3_100" = STD_YOG_G3,
+      "Grupo4_80" = STD_YOG_G4
       )
   )
 
 #Para utilizar kable
 library(knitr)
-kable(beginning_mods_results, align = c("c", "r"))
+library(kableExtra)
+#kable(beginning_mods_results)
+
+kable(beginning_mods_results) %>%
+  kable_styling(c("striped", "bordered")) 
 ```
+
+
+# ESFUERZOS DE CEDENCIA
+
+```{r }
+
+
+es_ult_g1s1=max(g1s1$Esfuerzo_de_traccion)
+es_ult_g1s2=max(g1s2$Esfuerzo_de_traccion)
+es_ult_g1s3=max(g1s3$Esfuerzo_de_traccion)
+es_ult_g1s4=max(g1s4$Esfuerzo_de_traccion)
+es_ult_g1s5=max(g1s5$Esfuerzo_de_traccion)
+
+es_ult_g2s1=max(g2s1$Esfuerzo_de_traccion)
+es_ult_g2s2=max(g2s2$Esfuerzo_de_traccion)
+es_ult_g2s3=max(g2s3$Esfuerzo_de_traccion)
+es_ult_g2s4=max(g2s4$Esfuerzo_de_traccion)
+es_ult_g2s5=max(g2s5$Esfuerzo_de_traccion)
+
+es_ult_g3s1=max(g3s1$Esfuerzo_de_traccion)
+es_ult_g3s2=max(g3s2$Esfuerzo_de_traccion)
+es_ult_g3s3=max(g3s3$Esfuerzo_de_traccion)
+es_ult_g3s4=max(g3s4$Esfuerzo_de_traccion)
+es_ult_g3s5=max(g3s5$Esfuerzo_de_traccion)
+
+es_ult_g4s1=max(g4s1$Esfuerzo_de_traccion)
+es_ult_g4s2=max(g4s2$Esfuerzo_de_traccion)
+es_ult_g4s3=max(g4s3$Esfuerzo_de_traccion)
+es_ult_g4s4=max(g4s4$Esfuerzo_de_traccion)
+es_ult_g4s5=max(g4s5$Esfuerzo_de_traccion)
+
+ESFUERZO_CEDENCIA_G1= mean(es_ult_g1s1,es_ult_g1s2,es_ult_g1s3,es_ult_g1s4,es_ult_g1s5)
+ESFUERZO_CEDENCIA_G2= mean(es_ult_g2s1,es_ult_g2s2,es_ult_g2s3,es_ult_g2s4,es_ult_g2s5)
+ESFUERZO_CEDENCIA_G3= mean(es_ult_g3s1,es_ult_g3s2,es_ult_g3s3,es_ult_g3s4,es_ult_g3s5)
+ESFUERZO_CEDENCIA_G4= mean(es_ult_g4s1,es_ult_g4s2,es_ult_g4s3,es_ult_g4s4,es_ult_g4s5)
+
+DESVIACION_ESF_CED_G1=sd(c(es_ult_g1s1,es_ult_g1s2,es_ult_g1s3,es_ult_g1s4,es_ult_g1s5))
+DESVIACION_ESF_CED_G2=sd(c(es_ult_g2s1,es_ult_g2s2,es_ult_g2s3,es_ult_g2s4,es_ult_g2s5))
+DESVIACION_ESF_CED_G3=sd(c(es_ult_g3s1,es_ult_g3s2,es_ult_g3s3,es_ult_g3s4,es_ult_g3s5))
+DESVIACION_ESF_CED_G4=sd(c(es_ult_g4s1,es_ult_g4s2,es_ult_g4s3,es_ult_g4s4,es_ult_g4s5))
+
+
+beginning_mods_results = data.frame(
+  "Esfuerzo_Cedencia_MPa" =
+    c("Grupo1_60" = ESFUERZO_CEDENCIA_G1,
+      "Grupo2_40" = ESFUERZO_CEDENCIA_G2,
+      "Grupo3_100" = ESFUERZO_CEDENCIA_G3,
+      "Grupo4_80" = ESFUERZO_CEDENCIA_G4
+      
+      ),
+  
+  "Desviación_Estandar" =
+    c("Grupo1_60" = DESVIACION_ESF_CED_G1,
+      "Grupo2_40" = DESVIACION_ESF_CED_G2,
+      "Grupo3_100" = DESVIACION_ESF_CED_G3,
+      "Grupo4_80" = DESVIACION_ESF_CED_G4
+      )
+  )
+
+#Para utilizar kable
+library(knitr)
+library(kableExtra)
+#kable(beginning_mods_results)
+
+kable(beginning_mods_results) %>%
+  kable_styling(c("striped", "bordered")) 
+```
+
+
+
+
+
+
+```{r }
+#ESFUERZO ULTIMO
+
+g1s1=head(g1s1,-5)
+g1s2=head(g1s2,-5)
+g1s3=head(g1s3,-5)
+g1s4=head(g1s4,-5)
+
+g2s1=head(g2s1,-5)
+g2s2=head(g2s2,-4)
+g2s3=head(g2s3,-5)
+g2s4=head(g2s4,-4)
+g2s5=head(g2s5,-5)
+
+g3s1=head(g3s1,-5)
+g3s2=head(g3s2,-15)
+g3s3=head(g3s3,-5)
+g3s4=head(g3s4,-5)
+g3s5=head(g3s5,-5)
+
+g4s1=head(g4s1,-5)
+g4s2=head(g4s2,-5)
+g4s3=head(g4s3,-5)
+g4s4=head(g4s4,-5)
+g4s5=head(g4s5,-5)
+
+
+eu_g1s1=tail(g1s1$Esfuerzo_de_traccion,1)
+eu_g1s2=tail(g1s2$Esfuerzo_de_traccion,1)
+eu_g1s3=tail(g1s3$Esfuerzo_de_traccion,1)
+eu_g1s4=tail(g1s4$Esfuerzo_de_traccion,1)
+eu_g1s5=tail(g1s5$Esfuerzo_de_traccion,1)
+EU_G1=mean(eu_g1s1,eu_g1s2,eu_g1s3,eu_g1s4,eu_g1s5)
+DES_G1=sd(c(eu_g1s1,eu_g1s2,eu_g1s3,eu_g1s4,eu_g1s5))
+
+eu_g2s1=tail(g2s1$Esfuerzo_de_traccion,1)
+eu_g2s2=tail(g2s2$Esfuerzo_de_traccion,1)
+eu_g2s3=tail(g2s3$Esfuerzo_de_traccion,1)
+eu_g2s4=tail(g2s4$Esfuerzo_de_traccion,1)
+eu_g2s5=tail(g2s5$Esfuerzo_de_traccion,1)
+EU_G2=mean(eu_g2s1,eu_g2s2,eu_g2s3,eu_g2s4,eu_g2s5)
+DES_G2=sd(c(eu_g2s1,eu_g2s2,eu_g2s3,eu_g2s4,eu_g2s5))
+
+eu_g3s1=tail(g3s1$Esfuerzo_de_traccion,1)
+eu_g3s2=tail(g3s2$Esfuerzo_de_traccion,1)
+eu_g3s3=tail(g3s3$Esfuerzo_de_traccion,1)
+eu_g3s4=tail(g3s4$Esfuerzo_de_traccion,1)
+eu_g3s5=tail(g3s5$Esfuerzo_de_traccion,1)
+EU_G3=mean(eu_g3s1,eu_g3s2,eu_g3s3,eu_g3s4,eu_g3s5)
+DES_G3=sd(c(eu_g3s1,eu_g3s2,eu_g3s3,eu_g3s4,eu_g3s5))
+
+eu_g4s1=tail(g4s1$Esfuerzo_de_traccion,1)
+eu_g4s2=tail(g4s2$Esfuerzo_de_traccion,1)
+eu_g4s3=tail(g4s3$Esfuerzo_de_traccion,1)
+eu_g4s4=tail(g4s4$Esfuerzo_de_traccion,1)
+eu_g4s5=tail(g4s5$Esfuerzo_de_traccion,1)
+EU_G4=mean(eu_g4s1,eu_g4s2,eu_g4s3,eu_g4s4,eu_g4s5)
+DES_G4=sd(c(eu_g4s1,eu_g4s2,eu_g4s3,eu_g4s4,eu_g4s5))
+
+
+
+beginning_mods_results = data.frame(
+  "Esfuerzo_Ultimo_MPa" =
+    c("Grupo1_60" = EU_G1,
+      "Grupo2_40" = EU_G2,
+      "Grupo3_100" = EU_G3,
+      "Grupo4_80" = EU_G4
+      
+      ),
+  
+  "Desviación Estandar" =
+    c("Grupo1_60" = DES_G1,
+      "Grupo2_40" = DES_G2,
+      "Grupo3_100" = DES_G3,
+      "Grupo4_80" = DES_G4
+      )
+  )
+
+#Para utilizar kable
+library(knitr)
+library(kableExtra)
+#kable(beginning_mods_results)
+
+kable(beginning_mods_results) %>%
+  kable_styling(c("striped", "bordered")) 
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
